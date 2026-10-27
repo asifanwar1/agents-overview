@@ -1,0 +1,14 @@
+{
+  "name": "agents-overview",
+  "version": "1.0.0",
+  "description": "Live futuristic visualizer for Claude Code agent activity",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js --no-open"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

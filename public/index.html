@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark"><i></i></span>
+        <span class="brand-text">AGENT<b>//</b>OVERVIEW</span>
+      </div>
+      <div class="modes" role="tablist" aria-label="View">
+        <button type="button" data-mode="single" title="Watch one session in detail">◉ FOCUS</button>
+        <button type="button" data-mode="fleet" title="Watch several sessions side by side">▦ FLEET</button>
+      </div>
+      <div class="session-ctl" id="singleCtl">
+        <select id="sessionSelect" aria-label="Session"></select>
+        <label class="toggle" title="Automatically jump to whichever session is active">
+          <input type="checkbox" id="follow" checked><span></span>AUTO-FOLLOW
+        </label>
+      </div>
+      <div class="session-ctl fleet-ctl" id="fleetCtl" hidden>
+        <span class="ctl-k">TILES</span>
+        <button type="button" class="count-btn" data-count="4">4</button>
+        <button type="button" class="count-btn" data-count="6">6</button>
+        <button type="button" class="count-btn" data-count="9">9</button>
+        <span class="fleet-note" id="fleetNote"></span>
+      </div>
+      <div class="sys">
+        <span class="chip-model" id="model">—</span>
+        <span class="link" id="link"><i></i><b id="linkText">CONNECTING</b></span>
+        <span class="clock" id="clock">--:--:--</span>
+      </div>
+    </header>
+
+    <section class="directive panel" id="directive">
+      <div class="directive-tag" id="directiveTag">YOUR DIRECTIVE</div>
+      <div class="directive-text" id="directiveText">Waiting for a session…</div>
+      <div class="directive-meta"><span id="projectName">—</span><span id="sessionTitle"></span></div>
+    </section>
+
+    <main class="stage">
+      <aside class="side">
+        <section class="panel roster">
+          <div class="panel-title"><span>AGENT NETWORK</span><span class="count" id="agentCount">0</span></div>
+          <ul id="roster"></ul>
+        </section>
+        <section class="panel files">
+          <div class="panel-title"><span>FILES TOUCHED</span><span class="count" id="fileCount">0</span></div>
+          <ul id="files"></ul>
+        </section>
+      </aside>
+
+      <section class="graph-wrap panel" id="graphWrap">
+        <canvas id="graph"></canvas>
+        <div class="say" id="say">
+          <div class="say-tag">◈ CLAUDE TRANSMISSION</div>
+          <div class="say-text" id="sayText"></div>
+        </div>
+        <div class="legend" id="legend"></div>
+        <div class="now" id="now">
+          <div class="now-tag" id="nowTag">STANDBY</div>
+          <div class="now-body">
+            <div class="now-label" id="nowLabel">Waiting for agent activity</div>
+            <div class="now-sub" id="nowSub"></div>
+          </div>
+          <div class="now-timer" id="nowTimer"></div>
+          <div class="now-scan"></div>
+        </div>
+      </section>
+
+      <section class="fleet-grid" id="fleetGrid"></section>
+
+      <section class="panel feed">
+        <div class="panel-title"><span>ACTIVITY STREAM</span><span class="count" id="feedCount">0</span></div>
+        <div id="feed"></div>
+        <div class="feed-hint">Click any tool card to see the raw command and output</div>
+      </section>
+    </main>
+
+    <footer class="hud panel">
+      <div class="stats">
+        <div class="stat"><span class="stat-k">TOOL CALLS</span><span class="stat-v" id="stTools">0</span></div>
+        <div class="stat"><span class="stat-k">FILES</span><span class="stat-v" id="stFiles">0</span></div>
+        <div class="stat"><span class="stat-k">WEB LOOKUPS</span><span class="stat-v" id="stWeb">0</span></div>
+        <div class="stat"><span class="stat-k">AGENTS</span><span class="stat-v" id="stAgents">1</span></div>
+        <div class="stat"><span class="stat-k">TOKENS OUT</span><span class="stat-v" id="stTokens">0</span></div>
+        <div class="stat"><span class="stat-k">ERRORS</span><span class="stat-v" id="stErrors">0</span></div>
+        <div class="stat"><span class="stat-k" id="stTimeK">SESSION TIME</span><span class="stat-v" id="stTime">0s</span></div>
+      </div>
+      <div class="spectrum">
+        <div class="spectrum-bar" id="spectrum"></div>
+        <div class="spectrum-legend" id="specLegend"></div>
+      </div>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
